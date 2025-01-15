@@ -255,6 +255,7 @@ const RegisterPage = () => {
                   type={isConfirmPasswordVisible ? "text" : "password"}
                   name="confirmPassword"
                   id="confirmPassword"
+                  placeholder="xxxxxxxx"
                   value={formData.confirmPassword}
                   onChange={handleChange}
                   className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
