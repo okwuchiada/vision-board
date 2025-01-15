@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useTransition } from "react";
+import { useCallback, useEffect, useState, useTransition } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import VisionBoard from "./board";
@@ -31,7 +31,7 @@ const SingleBoard = ({ id, user }: { id: string; user: User }) => {
     } catch (error) {}
   };
 
-  const loadBoard = async () => {
+  const loadBoard = useCallback(async () => {
     try {
       fetchBoardBySlug(user.id, id).then((data: any) => {
         if (data.success) {
@@ -46,11 +46,11 @@ const SingleBoard = ({ id, user }: { id: string; user: User }) => {
     } catch (error) {
       console.log(error);
     }
-  };
+  }, [user?.id]);
 
   useEffect(() => {
     loadBoard();
-  });
+  }, [loadBoard]);
 
   return (
     <main className="flex-1 bg-white">
